@@ -25,13 +25,13 @@ public class MockGetUserWithParamTest {
 	@Test
 	public void mockUserWithParamsAPITest() {
 		APIMocks.getDummyUserWithQueryParams();
-		RestAssured.given()
+		RestAssured.given().log().all()
 		.param("param", "value")
-	      .when()
+	      .when().log().all()
 	      .get("/api/users")
 	      .then().log().all()
 	      .statusCode(200)
-	      .body("name", equalTo("Debasmita"));
+	      .body("message", equalTo("User is searched."));
 		
 	}
 }
